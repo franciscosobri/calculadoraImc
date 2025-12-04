@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora IMC</title>
+</head>
+<body>
+
+<h2>Calculadora de IMC</h2>
+
+<!-- FORMULARIO -->
+<form th:action="@{/calculo}" method="post">
+
+    <label>Peso (kg):</label>
+    <input type="number" name="peso" step="0.1" required>
+    <br><br>
+
+    <label>Altura (m):</label>
+    <input type="number" name="altura" step="0.01" required>
+    <br><br>
+
+    <label>Edad:</label>
+    <input type="number" name="edad" required>
+    <br><br>
+
+    <label>Sexo:</label>
+    <select name="sexo">
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Calcular IMC</button>
+</form>
+
+<hr>
+
+<!-- RESULTADOS -->
+<div th:if="${imc != null}">
+    <h3>Resultado</h3>
+
+    <p>Peso: <span th:text="${peso}"></span> kg</p>
+    <p>Altura: <span th:text="${altura}"></span> m</p>
+    <p>Edad: <span th:text="${edad}"></span></p>
+    <p>Sexo: <span th:text="${sexo}"></span></p>
+
+    <p><strong>IMC: </strong><span th:text="${imc}"></span></p>
+    <p><strong>Categoría: </strong><span th:text="${categoria}"></span></p>
+</div>
+
+</body>
+</html>
